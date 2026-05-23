@@ -3,41 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Online Shop</title>
+    <title>Lazada Clone Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">My Shop</div>
-        <div class="categories">
-            <button onclick="filterCategory('all')">All</button>
-            <button onclick="filterCategory('clothing')">Clothing</button>
-            <button onclick="filterCategory('electronics')">Electronics</button>
-            <button onclick="filterCategory('accessories')">Accessories</button>
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <span>Save More on App</span>
+            <span>Sell on Marketplace</span>
+            <span>Customer Care</span>
+            <span>Track My Order</span>
         </div>
-        <div class="cart-icon-container">
-            🛒 Cart (<span id="cartCount">0</span>)
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Lazada<span>Clone</span></div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Search in Lazada..." id="searchInput" oninput="searchProducts(this.value)">
+                <button>🔍</button>
+            </div>
+
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 <span id="cartCount">0</span>
+            </div>
         </div>
     </nav>
 
-    <main class="shop-container">
-        <section class="products-section">
-            <h2>Our Products</h2>
-            <div class="grid" id="productGrid">
-                </div>
-        </section>
+    <header class="hero-banner">
+        <div class="banner-content">
+            <h2>Super Flash Sale</h2>
+            <p>Up to 70% OFF | Free Shipping Nationwide</p>
+            <button class="shop-now-btn">Shop Now</button>
+        </div>
+    </header>
 
-        <aside class="cart-sidebar">
-            <h2>Your Shopping Cart</h2>
-            <div id="cartItems" class="cart-items-list">
-                </div>
-            <div class="cart-summary">
-                <h3>Total: <span id="cartTotal">0 MMK</span></h3>
-                <button class="checkout-btn" onclick="checkoutViaWhatsApp()">Order via WhatsApp 💬</button>
-            </div>
-        </aside>
+    <section class="channels-section">
+        <div class="channel-card" onclick="filterCategory('all')">🌟 All Deals</div>
+        <div class="channel-card" onclick="filterCategory('electronics')">📱 Electronics</div>
+        <div class="channel-card" onclick="filterCategory('clothing')">👗 Fashion</div>
+        <div class="channel-card" onclick="filterCategory('accessories')">⌚ Accessories</div>
+    </section>
+
+    <main class="main-content">
+        <h2 class="section-title">Just For You</h2>
+        <div class="grid" id="productGrid"></div>
     </main>
+
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-drawer-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cartItems" class="drawer-items-list"></div>
+        <div class="drawer-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cartTotal">0 MMK</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutViaWhatsApp()">Proceed to Checkout (WhatsApp) 💬</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
     <script src="shop.js"></script>
 </body>
